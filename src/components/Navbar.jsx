@@ -15,7 +15,7 @@ const Navbar = () => {
     async function handleSubmit(event) {
         event.preventDefault();
         if (stocks) {
-            const url = `https://financialmodelingprep.com/api/v3/profile/${stocks}?apikey=qe1euZUsQoZdqrjiPxFjR6Jtu8CEW9DO`;
+            const url = `https://financialmodelingprep.com/api/v3/profile/${stocks}?apikey=gQ7ba4Lk6peogoo4ugS9Y1oY9XJ0OTeL`;
             try {
                 const response = await fetch(url);
                 const data = await response.json();

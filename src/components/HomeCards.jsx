@@ -10,7 +10,7 @@ const HomeCards = ({ gains, onClick }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://financialmodelingprep.com/api/v3/profile/${compname}?apikey=qe1euZUsQoZdqrjiPxFjR6Jtu8CEW9DO`);
+        const response = await axios.get(`https://financialmodelingprep.com/api/v3/profile/${compname}?apikey=gQ7ba4Lk6peogoo4ugS9Y1oY9XJ0OTeL`);
         setData(response.data[0]);
       } catch (error) {
         console.error('Error fetching overview data:', error);
