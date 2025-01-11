@@ -21,8 +21,7 @@ app.use(cookieparser());
 
 // CORS Middleware
 const corsOptions = {
-  origin: "https://sbroker.vercel.app", // Frontend URL
-  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+  origin: ["*","https://sbroker.vercel.app","https://sbroker-sanchay151s-projects.vercel.app","https://sbroker-git-master-sanchay151s-projects.vercel.app"], // Frontend URL
   credentials: true, // Allow cookies and credentials
 };
 app.use(cors(corsOptions));
