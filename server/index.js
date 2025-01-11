@@ -21,10 +21,26 @@ app.use(cookieparser());
 
 // CORS Middleware
 
-app.use(cors({
-  origin: 'https://sbroker.vercel.app',
-  credentials:true
-}));
+const corsOptions = {
+  origin: [`https://sbroker.vercel.app`],
+  methods: "GET,HEAD,PUT,OPTIONS,POST,DELETE",
+  allowedHeaders: [
+    "Access-Control-Allow-Headers",
+    "Origin",
+    "X-Requested-With",
+    "Content-Type",
+    "Accept",
+    "Authorization",
+    "token",
+    "Access-Control-Request-Method",
+    "Access-Control-Request-Headers",
+    "Access-Control-Allow-Credentials",
+  ],
+  credentials: true,
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+};
+app.use(cors(corsOptions));
 
 
 // Routes
