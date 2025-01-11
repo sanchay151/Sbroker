@@ -1,0 +1,2 @@
+A stock market app through which invester can buy and sell shares. It has info about various stocks on nasdaq and has a portfolio dashboard to track your portfolio. It has real life eod stocks data and is integrated with backend using express js and mongodb.
+You can buy and sell stocks, add or remove stocks from watchlist, add virtual money to wallet, update you profile picture and many more

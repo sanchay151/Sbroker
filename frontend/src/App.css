@@ -1,0 +1,46 @@
+/* write your css here */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    font-family: 'Montserrat';
+}
+/* General Scrollbar Style */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the vertical scrollbar */
+    background: #1a1a1a; /* Background of the track */
+  }
+  
+  /* Scrollbar Track */
+  ::-webkit-scrollbar-track {
+    background: #1a1a1a; /* Matches the background */
+  }
+  
+  /* Scrollbar Thumb */
+  ::-webkit-scrollbar-thumb {
+    background: #555; /* Color of the thumb */
+    border-radius: 6px; /* Rounded edges for the thumb */
+  }
+  
+  /* Thumb Hover Effect */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #888; /* Slightly lighter color on hover */
+  }
+  
+  /* Scrollbar Buttons */
+  ::-webkit-scrollbar-button {
+    background: #1a1a1a; /* Button background matches track */
+    border: none; /* Removes border */
+    height: 12px; /* Height of the arrow buttons */
+    display: block;
+  }
+  
+  /* Button Hover Effect */
+  ::-webkit-scrollbar-button:hover {
+    background: #555; /* Change button color on hover */
+  }
+  
+  /* Firefox Compatibility */
+  html {
+    scrollbar-width: thin; /* Makes scrollbar thinner */
+    scrollbar-color: #555 #1a1a1a; /* Thumb and track colors */
+  }
+  
