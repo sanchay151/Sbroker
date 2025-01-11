@@ -22,7 +22,8 @@ app.use(cookieparser());
 // CORS Middleware
 
 app.use(cors({
-  origin: 'https://sbroker.vercel.app'
+  origin: 'https://sbroker.vercel.app',
+  credentials:true
 }));
 
 
