@@ -21,10 +21,23 @@ app.use(cookieparser());
 
 // CORS Middleware
 const corsOptions = {
-  origin: ["*","https://sbroker.vercel.app","https://sbroker-sanchay151s-projects.vercel.app","https://sbroker-git-master-sanchay151s-projects.vercel.app"], // Frontend URL
-  credentials: true, // Allow cookies and credentials
+  origin: (origin, callback) => {
+    const allowedOrigins = [
+      "https://sbroker.vercel.app",
+      "https://sbroker-sanchay151s-projects.vercel.app",
+      "https://sbroker-git-master-sanchay151s-projects.vercel.app",
+    ];
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true); // Allow requests from allowed origins or non-browser clients
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true, // Allow cookies/auth tokens to be sent
 };
+
 app.use(cors(corsOptions));
+
 
 // Routes
 app.use("/api/v1/user", userroutes);
