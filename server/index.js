@@ -6,6 +6,7 @@ const stockroutes = require("./routes/routestock");
 const watchlistroute = require("./routes/routewatchlist");
 const database = require("./config/database");
 const cookieparser = require("cookie-parser");
+const cors = require('cors');
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -19,22 +20,29 @@ app.use(express.json());
 app.use(cookieparser());
 
 // CORS Middleware
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://sbroker.vercel.app"); // Allow your frontend's URL
-  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS, POST, PUT, DELETE, PATCH"); // Explicitly allow all methods
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-  ); // Include the necessary headers
-  res.setHeader("Access-Control-Allow-Credentials", "true"); // Enable credentials (cookies)
-  
-  // Allow preflight requests (OPTIONS)
-  if (req.method === "OPTIONS") {
-    return res.status(200).end(); // Send a 200 response for preflight requests
-  }
+app.use(
+  cors({
+    origin: "https://sbroker.vercel.app", // Allow your frontend's URL
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // Explicitly allow all methods
+    allowedHeaders: [
+      "X-CSRF-Token",
+      "X-Requested-With",
+      "Accept",
+      "Accept-Version",
+      "Content-Length",
+      "Content-MD5",
+      "Content-Type",
+      "Date",
+      "X-Api-Version",
+    ], // Include the necessary headers
+    credentials: true, // Enable credentials (cookies)
+  })
+);
 
-  next();
-});
+// Ensure Express handles preflight (OPTIONS) requests
+app.options("*", cors());
+
+
 
 // Routes
 app.use("/api/v1/user", userroutes);
@@ -54,3 +62,5 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`App is running at ${PORT}`);
 });
+
+
