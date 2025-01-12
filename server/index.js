@@ -28,6 +28,7 @@ app.use(
       "Content-Type",
       "Date",
       "X-Api-Version",
+      "Access-Control-Allow-Origin"
     ], // Include the necessary headers
     credentials: true, // Enable credentials (cookies)
   })
