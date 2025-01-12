@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cookieparser());
 
 // CORS Middleware
-app.use(
+/*app.use(
   cors({
     origin: "https://sbroker.vercel.app", // Allow your frontend's URL
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // Explicitly allow all methods
@@ -43,7 +43,7 @@ app.use(
 app.options("*", cors());
 
 
-
+*/
 // Routes
 app.use("/api/v1/user", userroutes);
 app.use("/api/v1/profile", profileroutes);
