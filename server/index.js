@@ -22,10 +22,25 @@ app.use(cookieparser());
 // CORS Middleware
 app.use(
   cors({
-    origin: "https://sbroker.vercel.app", // Explicitly allow your frontend's URL
-    credentials: true, // Allow sending cookies or authentication headers
+    origin: "https://sbroker.vercel.app", // Allow your frontend's URL
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // Explicitly allow all methods
+    allowedHeaders: [
+      "X-CSRF-Token",
+      "X-Requested-With",
+      "Accept",
+      "Accept-Version",
+      "Content-Length",
+      "Content-MD5",
+      "Content-Type",
+      "Date",
+      "X-Api-Version",
+    ], // Include the necessary headers
+    credentials: true, // Enable credentials (cookies)
   })
 );
+
+// Ensure Express handles preflight (OPTIONS) requests
+app.options("*", cors());
 
 
 
