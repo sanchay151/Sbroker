@@ -14,18 +14,17 @@ const PORT = process.env.PORT || 4000;
 
 // Connect to the database
 database.connect();
-
+app.use(
+  cors()
+);
 // Middleware
 app.use(express.json());
 app.use(cookieparser());
 
 // CORS Middleware
-app.use(
-  cors()
-);
+
 
 // Ensure Express handles preflight (OPTIONS) requests
-app.options("*", cors());
 
 
 
