@@ -20,7 +20,12 @@ app.use(express.json());
 app.use(cookieparser());
 
 // CORS Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://sbroker.vercel.app", // Explicitly allow your frontend's URL
+    credentials: true, // Allow sending cookies or authentication headers
+  })
+);
 
 
 

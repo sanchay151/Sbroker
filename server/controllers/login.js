@@ -76,33 +76,33 @@ exports.login = async (req, res) => {
     try {
         const { email, userpassword } = req.body;
 
+        // Validate input fields
         if (!email || !userpassword) {
             return res.status(400).json({
                 success: false,
-                message: "Please Fill up All the Required Fields",
+                message: "Please fill up all the required fields",
             });
         }
 
-        const user = await User.findOne({ email });
-        user.populate('stocksHolding');
-      //  const user=User.findById(vsr._id).populate('stocksHolding');
+        // Find the user by email and populate 'stocksHolding'
+        const user = await User.findOne({ email }).populate('stocksHolding');
         if (!user) {
             return res.status(401).json({
                 success: false,
-                message: "User is not Registered with Us Please SignUp to Continue",
+                message: "User is not registered with us. Please sign up to continue.",
             });
         }
 
-
-        const userpasswordMatch = await bcrypt.compare(userpassword, user.UserPassword);
-        if (!userpasswordMatch) {
+        // Check if the provided password matches the stored hashed password
+        const isPasswordMatch = await bcrypt.compare(userpassword, user.UserPassword);
+        if (!isPasswordMatch) {
             return res.status(401).json({
                 success: false,
-                message: "userpassword is incorrect",
+                message: "Password is incorrect",
             });
         }
 
-        // update today's price once a day after 8 AM
+        // Update today's price once a day after 8 AM
         const lastUpdate = user.lastPriceUpdate;
         const now = moment();
         const today8AM = moment().hour(8).minute(0).second(0);
@@ -113,36 +113,40 @@ exports.login = async (req, res) => {
             await user.save();
         }
 
+        // Generate a JWT token
         const token = jwt.sign(
             { email: user.email, id: user._id },
             process.env.JWT_SECRET,
             { expiresIn: "7d" }
         );
 
-       // user.token = token;
-      //  user.UserPassword = undefined;
-        await user.save();
-        user.UserPassword=undefined;
-        const options = {
-            expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-            httpOnly: true,
+        // Configure cookie settings for cross-origin usage
+        const cookieOptions = {
+            httpOnly: true,         // Prevent JavaScript access
+            secure: true,           // Ensure cookies are sent over HTTPS
+            sameSite: "None",       // Required for cross-origin requests
+            expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 3 days
         };
 
-        res.cookie("token", token, options).status(200).json({
+        // Remove sensitive fields before sending the user object
+        user.UserPassword = undefined;
+
+        // Send the response with the token and user details
+        res.cookie("token", token, cookieOptions).status(200).json({
             success: true,
             token,
             user,
-            message: "User Login Success",
+            message: "User login successful",
         });
-
     } catch (error) {
         console.error(error);
         return res.status(500).json({
             success: false,
-            message: "Login Failure Please Try Again",
+            message: "Login failure. Please try again.",
         });
     }
 };
+
 exports.forgotuserpassword = async (req, res) => {
     try {
         const { email } = req.body;
