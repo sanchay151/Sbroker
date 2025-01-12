@@ -28,14 +28,11 @@ app.use(
       "Content-Type",
       "Date",
       "X-Api-Version",
-      "Access-Control-Allow-Origin"
     ], // Include the necessary headers
     credentials: true, // Enable credentials (cookies)
   })
 );
 
-// Ensure Express handles preflight (OPTIONS) requests
-app.options("*", cors());
 // Middleware
 app.use(express.json());
 app.use(cookieparser());
