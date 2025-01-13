@@ -38,7 +38,7 @@ app.use(express.json());
 app.use(cookieparser());
 
 // CORS Middleware
-
+app.options('*', cors());
 
 // Ensure Express handles preflight (OPTIONS) requests
 
