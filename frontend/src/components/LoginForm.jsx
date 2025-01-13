@@ -60,7 +60,7 @@ const LoginForm = () => {
     try {
       setLoading(true);
       const url = "https://sbroker-backend.vercel.app/api/v1/user/login";
-      const res = await axios.post(url, loginInfo, { withCredentials: true });
+      const res = await axios.post(url, loginInfo, { withCredentials: false });
 
       if (res.status === 200) {
         const { user, token } = res.data;
