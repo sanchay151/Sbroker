@@ -6,9 +6,9 @@ const stockroutes = require("./routes/routestock");
 const watchlistroute = require("./routes/routewatchlist");
 const database = require("./config/database");
 const cookieparser = require("cookie-parser");
-const cors = require('cors');
+const cors = require("cors");
 const dotenv = require("dotenv");
-const morgan = require('morgan');  // Logging middleware
+const morgan = require("morgan"); // Logging middleware
 
 dotenv.config();
 const PORT = process.env.PORT || 4000;
@@ -16,6 +16,7 @@ const PORT = process.env.PORT || 4000;
 // Connect to the database
 database.connect();
 
+// CORS Configuration
 app.use(
   cors({
     origin: "https://sbroker.vercel.app", // Allow your frontend's URL
@@ -30,23 +31,30 @@ app.use(
       "Content-Type",
       "Date",
       "X-Api-Version",
-    ], // Include the necessary headers
+    ],
     credentials: true, // Enable credentials (cookies)
   })
 );
 
-app.options('*', (req, res) => {
-  res.header('Access-Control-Allow-Origin', 'https://sbroker.vercel.app');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
-  res.header('Access-Control-Allow-Credentials', 'true');
+// Handle OPTIONS preflight requests globally
+app.options("*", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "https://sbroker.vercel.app");
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+  );
+  res.header("Access-Control-Allow-Credentials", "true");
   res.sendStatus(200); // Respond OK to preflight requests
 });
 
 // Middleware
 app.use(express.json());
 app.use(cookieparser());
-app.use(morgan('combined')); // Logging middleware
+app.use(morgan("combined")); // Logging middleware
 
 // Routes
 app.use("/api/v1/user", userroutes);
@@ -59,6 +67,23 @@ app.get("/", (req, res) => {
   return res.json({
     success: true,
     message: "Your server is up and running....",
+  });
+});
+
+// 404 Route Handler
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: "Route not found!",
+  });
+});
+
+// Error Handling Middleware
+app.use((err, req, res, next) => {
+  console.error("Error:", err.message);
+  res.status(500).json({
+    success: false,
+    message: "Internal server error",
   });
 });
 
