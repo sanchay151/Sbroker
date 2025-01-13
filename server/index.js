@@ -32,13 +32,13 @@ app.use(
     credentials: true, // Enable credentials (cookies)
   })
 );
+app.options('*', cors());
 
 // Middleware
 app.use(express.json());
 app.use(cookieparser());
 
 // CORS Middleware
-app.options('*', cors());
 
 // Ensure Express handles preflight (OPTIONS) requests
 
