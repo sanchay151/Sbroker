@@ -18,7 +18,7 @@ database.connect();
 
 app.use(
   cors({
-    origin: "https://sbroker.vercel.app", // Allow your frontend's URL
+    origin: ["https://sbroker.vercel.app","http://localhost:3000"], // Allow your frontend's URL
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // Explicitly allow all methods
     allowedHeaders: [
       "X-CSRF-Token",
