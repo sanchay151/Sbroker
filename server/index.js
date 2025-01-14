@@ -36,7 +36,7 @@ app.use(
 );
 
 app.options('*', (req, res) => {
-  res.header('Access-Control-Allow-Origin', 'https://sbroker.vercel.app');
+  res.header('Access-Control-Allow-Origin', ['https://sbroker.vercel.app','http://localhost:3000']);
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
   res.header('Access-Control-Allow-Credentials', 'true');
