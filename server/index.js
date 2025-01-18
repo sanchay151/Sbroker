@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 
 // Other Middleware
 app.use(cors({
-  origin: "https://sbroker.vercel.app",
+  origin: "https://sbroker.vercel.app/login",
   credentials: true,
 }));
 app.use(express.json());
