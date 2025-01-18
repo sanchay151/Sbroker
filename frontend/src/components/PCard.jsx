@@ -31,7 +31,7 @@ const Pcard = ({ gains, stockname }) => {
         ):(
           <div className="flex flex-col mt-2 mb-4">
           <div className="flex flex-row ">
-          <div className="text-lg font-semibold ml-4 mr-16">{stockname}</div>
+          <button className="text-lg font-semibold ml-4 mr-16" onClick={gohandler}>{stockname}</button>
           <div className="text-lg font-base ml-28 mr-16">{open.toFixed(2)}</div>
           <div className="text-lg font-base ml-28 mr-16">{close.toFixed(2)}</div>
           <div className={change>=0 ? 'text-[#0ABB92] text-lg font-base ml-auto mr-auto': 'text-[#D55438] text-lg font-base ml-auto mr-auto'}>{change.toFixed(2)}</div>

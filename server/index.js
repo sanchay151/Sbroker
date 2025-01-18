@@ -15,35 +15,19 @@ const PORT = process.env.PORT || 4000;
 
 // Connect to the database
 database.connect()
-  .then(() => console.log("Database connected successfully"))
-  .catch((err) => {
-    console.error("Database connection error:", err);
-    process.exit(1); // Exit the process if the database connection fails
-  });
+  
 
 // Middleware
 app.use(
-  cors({
-    origin: ["https://sbroker.vercel.app", "http://localhost:3000"], // Allow frontend URLs
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // Allow all methods
-    allowedHeaders: [
-      "X-CSRF-Token",
-      "X-Requested-With",
-      "Accept",
-      "Accept-Version",
-      "Content-Length",
-      "Content-MD5",
-      "Content-Type",
-      "Date",
-      "X-Api-Version",
-    ], // Include necessary headers
-    credentials: true, // Allow cookies
-  })
-);
+	cors({
+		origin:"https://sbroker.vercel.app",
+		credentials:true,
+	})
+)
 
 app.use(express.json());
 app.use(cookieparser());
-app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev")); // Use 'dev' logging in development
+//app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev")); // Use 'dev' logging in development
 
 // Routes
 app.use("/api/v1/user", userroutes);
