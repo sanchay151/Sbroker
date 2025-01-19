@@ -72,6 +72,7 @@ const LoginForm = () => {
 
       }
     } catch (error) {
+      console.log(error);
       setLoginMessage(
         error.response?.data?.message || "An unexpected error occurred. Please try again."
       );

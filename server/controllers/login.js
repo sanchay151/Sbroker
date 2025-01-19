@@ -15,6 +15,7 @@ exports.signup = async (req, res) => {
         if (!Name || !phoneNumber || !email || !userpassword || !confirmuserpassword) {
             return res.status(403).send({
                 success: false,
+                Name,
                 message: "All Fields are required",
             });
         }
