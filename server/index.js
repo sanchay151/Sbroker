@@ -34,14 +34,10 @@ app.use((req, res, next) => {
 });
 
 // Other Middleware
-app.use(
-  cors({
-    origin: "https://sbroker.vercel.app", // Frontend URL
-    methods: "GET, POST, PUT, DELETE, OPTIONS",
-    credentials: true, // Allow cookies and credentials
-    allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
-  })
-);
+app.use(cors({
+  origin: "https://sbroker.vercel.app",
+  credentials: true,
+}));
 app.use(express.json());
 app.use(cookieparser());
 app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev")); // Use detailed logs in development
