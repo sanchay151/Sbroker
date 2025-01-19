@@ -12,7 +12,7 @@ const {
 //const { authenticateToken } = require("../middleware/Auth");
 
 // login and signup
-router.post("/login", login);
+router.get("/login", login);
 router.post("/signup", signup);
 router.post("/logout", logout);
 
