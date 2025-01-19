@@ -110,6 +110,7 @@ const LoginForm = () => {
         setTimeout(() => setIsSignup(false), 1000); // Switch to login form after signup
       }
     } catch (error) {
+      console.log(error);
       setSignupMessage(
         
         error.response?.data?.message || "An unexpected error occurred. Please try again."
