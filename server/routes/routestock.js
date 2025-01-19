@@ -12,8 +12,8 @@ const {
 
  }=require("../middleware/Auth");
 router.get("/stockdata/:userId",authenticateToken,stockdata);
-router.post("/buystock/:userId",authenticateToken,buystock);
-router.post("/sellstock/:userId",authenticateToken,sellstock);
+router.get("/buystock/:userId",authenticateToken,buystock);
+router.get("/sellstock/:userId",authenticateToken,sellstock);
 router.get("/totalprofit/:userId",authenticateToken,calculateInvestmentAndProfit);
 
 module.exports=router;

@@ -23,7 +23,7 @@ const ProfileHome = () => {
           const amountinfo = {
             amount: amountToAdd,
           };
-          const res = await axios.post(
+          const res = await axios.get(
             url,
             amountinfo,
             {
@@ -60,7 +60,7 @@ const ProfileHome = () => {
       try {
         const authtoken = localStorage.getItem("authToken");
 
-        const response = await axios.post(
+        const response = await axios.get(
           `https://sbroker-backend.vercel.app/api/v1/profile/updatedp/${UserId}`,
           formData,
           {

@@ -12,8 +12,8 @@ const {
 const { authenticateToken   }=require("../middleware/Auth");
 
 router.get("/watchliststocks/:userId",authenticateToken,watchstock);
-router.post("/addtowatchlist/:userId",authenticateToken,addtowatchlist);
-router.post("/removefromwatchlist/:userId",authenticateToken,removeFromWatchlist);
+router.get("/addtowatchlist/:userId",authenticateToken,addtowatchlist);
+router.get("/removefromwatchlist/:userId",authenticateToken,removeFromWatchlist);
 router.get("/checkwatchlist/:userId",authenticateToken,checkWatchlist);
 
 module.exports=router;

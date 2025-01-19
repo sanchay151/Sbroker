@@ -100,7 +100,7 @@ const LoginForm = () => {
 
     try {
       const url = "https://sbroker-backend.vercel.app/api/v1/user/signup";
-      const res = await axios.post(url, signupInfo, { withCredentials: true });
+      const res = await axios.get(url, signupInfo, { withCredentials: true });
 
       if (res.status === 200) {
         setSignupMessage("Signup Successful!");

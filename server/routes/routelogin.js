@@ -13,13 +13,13 @@ const {
 
 // login and signup
 router.get("/login", login);
-router.post("/signup", signup);
-router.post("/logout", logout);
+router.get("/signup", signup);
+router.get("/logout", logout);
 
 // Forgot userpassword route
-router.post("/forgot-userpassword", forgotuserpassword);
+router.get("/forgot-userpassword", forgotuserpassword);
 
 // Reset userpassword route (requires token in the URL)
-router.post("/userpasswordreset/:resetToken", resetuserpassword);
+router.get("/userpasswordreset/:resetToken", resetuserpassword);
 
 module.exports = router;

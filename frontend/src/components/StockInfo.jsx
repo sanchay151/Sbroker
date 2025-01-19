@@ -147,7 +147,7 @@ const StockInfo = () => {
         todayprice:daily.close
       }
       console.log("2");
-      const response = await axios.post(`https://sbroker-backend.vercel.app/api/v1/stock/buystock/${UserId}`,buyinfo, {
+      const response = await axios.get(`https://sbroker-backend.vercel.app/api/v1/stock/buystock/${UserId}`,buyinfo, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -208,7 +208,7 @@ const StockInfo = () => {
         sellprice:daily.close,
         quantity:quantity,
       }
-      const response = await axios.post(`https://sbroker-backend.vercel.app/api/v1/stock/sellstock/${UserId}`,sellinfo, {
+      const response = await axios.get(`https://sbroker-backend.vercel.app/api/v1/stock/sellstock/${UserId}`,sellinfo, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
