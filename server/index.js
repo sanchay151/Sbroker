@@ -17,21 +17,7 @@ const PORT = process.env.PORT || 4000;
 database.connect();
 
 // Middleware for CORS
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://sbroker.vercel.app");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization"
-  );
-  res.setHeader("Access-Control-Allow-Credentials", "true");
 
-  if (req.method === "OPTIONS") {
-    return res.status(204).end(); // Preflight requests
-  }
-
-  next();
-});
 
 // Other Middleware
 app.use(cors({
