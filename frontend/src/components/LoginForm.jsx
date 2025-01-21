@@ -60,7 +60,7 @@ const LoginForm = () => {
     try {
       setLoading(true);
       const url = "https://sbroker-backend.vercel.app/api/v1/user/login";
-      const res = await axios.post(url, loginInfo, { withCredentials: true ,
+      const res = await axios.get(url, loginInfo, { withCredentials: true ,
         headers: {
           "Content-Type": "application/json",
         },

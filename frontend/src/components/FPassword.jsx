@@ -23,7 +23,7 @@ const FPassword = ()=>{
       }
       try {
          const url="https://sbroker-backend.vercel.app/api/v1/user/forgot-userpassword";
-         const res=await axios.post(url,fp,{ withCredentials: true });
+         const res=await axios.get(url,fp,{ withCredentials: true });
          console.log(res);
          console.log("yahan hai");
          setFPasswordmessage(res.data.message)
