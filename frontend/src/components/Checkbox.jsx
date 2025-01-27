@@ -33,7 +33,7 @@ const Checkbox = ({ stockName }) => {
             const removeticker={
                 stockticker:stockName
             }
-            const response = await axios.post(`http://localhost:4000/api/v1/watchlist/removefromwatchlist/${UserId}`,removeticker, {
+            const response = await axios.post(`https://sbroker-backend.vercel.app/watchlist/removefromwatchlist/${UserId}`,removeticker, {
                 headers: {
                   Authorization: `Bearer ${authToken}`,
                 },

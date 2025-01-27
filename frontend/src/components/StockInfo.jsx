@@ -147,7 +147,7 @@ const StockInfo = () => {
         todayprice:daily.close
       }
       console.log("2");
-      const response = await axios.get(`https://sbroker-backend.vercel.app/api/v1/stock/buystock/${UserId}`,buyinfo, {
+      const response = await axios.get(`https://sbroker-backend.vercel.app/stock/buystock/${UserId}`,buyinfo, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -168,7 +168,7 @@ const StockInfo = () => {
 
       console.log("4");
       try {
-        const url = `https://sbroker-backend.vercel.app/api/v1/stock/totalprofit/${UserId}`;
+        const url = `https://sbroker-backend.vercel.app/stock/totalprofit/${UserId}`;
         const res = await axios.get(url, {
           headers: {
             Authorization: `Bearer ${authToken}`,
@@ -208,7 +208,7 @@ const StockInfo = () => {
         sellprice:daily.close,
         quantity:quantity,
       }
-      const response = await axios.get(`https://sbroker-backend.vercel.app/api/v1/stock/sellstock/${UserId}`,sellinfo, {
+      const response = await axios.get(`https://sbroker-backend.vercel.app/stock/sellstock/${UserId}`,sellinfo, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -224,7 +224,7 @@ const StockInfo = () => {
       
      
       try {
-        const url = `https://sbroker-backend.vercel.app/api/v1/stock/totalprofit/${UserId}`;
+        const url = `https://sbroker-backend.vercel.app/stock/totalprofit/${UserId}`;
         const res = await axios.get(url, {
           headers: {
             Authorization: `Bearer ${authToken}`,

@@ -29,10 +29,10 @@ app.use(cookieparser());
 app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev")); // Use detailed logs in development
 
 // Routes
-app.use("/api/v1/user", userroutes);
-app.use("/api/v1/profile", profileroutes);
-app.use("/api/v1/stock", stockroutes);
-app.use("/api/v1/watchlist", watchlistroute);
+app.use("/user", userroutes);
+app.use("/profile", profileroutes);
+app.use("/stock", stockroutes);
+app.use("/watchlist", watchlistroute);
 
 // Root route
 app.get("/", (req, res) => {
