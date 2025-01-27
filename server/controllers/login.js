@@ -82,6 +82,13 @@ exports.login = async (req, res) => {
         const { email, userpassword } = req.body;
 
         // Validate input fields
+        if(!email){
+            return res.status(400).json({
+                success:false,
+                userpassword,
+                message:"email wala hai ye",
+            })
+        }
         if (!email || !userpassword) {
             return res.status(400).json({
                 success: false,
