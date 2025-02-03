@@ -154,6 +154,7 @@ exports.login = async (req, res) => {
     } catch (error) {
         console.error(error);
         return res.status(500).json({
+            error,
             success: false,
             message: "Login failure. Please try again.",
         });
