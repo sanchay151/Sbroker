@@ -9,10 +9,17 @@ const cookieparser = require("cookie-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const morgan = require("morgan"); // Logging middleware
-app.use(cors({
-  origin: 'https://sbroker.vercel.app',
-  credentials: true,
-}));
+//app.use(cors({
+//  origin: 'https://sbroker.vercel.app',
+ // credentials: true,
+// }));
+ app.use(cors({
+   origin: 'https://sbroker.vercel.app/',
+   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+   credentials: true,
+   optionsSuccessStatus: 204,
+ }));
+ app.use(cors())
 dotenv.config();
 const PORT = process.env.PORT || 4000;
 
