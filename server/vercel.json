@@ -2,14 +2,19 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.js",   
+      "src": "index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/"
-    }
-  ]
+    { "src": "/user/(.*)", "dest": "/routes/routelogin.js" },
+    { "src": "/profile/(.*)", "dest": "/routes/routeprofile.js" },
+    { "src": "/stock/(.*)", "dest": "/routes/routestock.js" },
+    { "src": "/watchlist/(.*)", "dest": "/routes/routewatchlist.js" },
+    { "src": "/", "dest": "/index.js" }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "PORT": "4000"
+  }
 }
