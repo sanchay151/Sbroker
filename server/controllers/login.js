@@ -83,9 +83,10 @@ exports.login = async (req, res) => {
 
         // Validate input fields
         if(!userpassword){
+            console.log(req);
             return res.status(400).json({
                 success:false,
-                email,
+                req,
                 message:"password wala hai ye",
             })
         }
