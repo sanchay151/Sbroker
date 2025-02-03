@@ -7,14 +7,10 @@
     }
   ],
   "routes": [
-    { "src": "/user/(.*)", "dest": "/routes/routelogin.js" },
-    { "src": "/profile/(.*)", "dest": "/routes/routeprofile.js" },
-    { "src": "/stock/(.*)", "dest": "/routes/routestock.js" },
-    { "src": "/watchlist/(.*)", "dest": "/routes/routewatchlist.js" },
+    { "src": "/user/(.*)", "dest": "/index.js" },
+    { "src": "/profile/(.*)", "dest": "/index.js" },
+    { "src": "/stock/(.*)", "dest": "/index.js" },
+    { "src": "/watchlist/(.*)", "dest": "/index.js" },
     { "src": "/", "dest": "/index.js" }
-  ],
-  "env": {
-    "NODE_ENV": "production",
-    "PORT": "4000"
-  }
+  ]
 }
