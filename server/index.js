@@ -10,7 +10,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const morgan = require("morgan"); // Logging middleware
 app.use(cors({
-  origin: "https://sbroker.vercel.app",
+  origin: 'https://sbroker.vercel.app',
   credentials: true,
 }));
 dotenv.config();
