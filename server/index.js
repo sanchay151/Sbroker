@@ -11,7 +11,7 @@ const dotenv = require("dotenv");
 const morgan = require("morgan"); // Logging middleware
 app.use(
 	cors({
-		origin:"http://localhost:3000",
+		origin:["http://localhost:3000","https://sbroker.vercel.app"],
 		credentials:true,
 	})
 )
