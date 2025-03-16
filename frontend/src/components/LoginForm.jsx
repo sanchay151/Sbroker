@@ -59,7 +59,7 @@ const LoginForm = () => {
 
     try {
       setLoading(true);
-      const url = "https://sbroker-backend.vercel.app/user/login";
+      const url = "http://localhost:4000/user/login";
       const res = await axios.post(url, loginInfo, { withCredentials: true ,
         headers: {
           "Content-Type": "application/json",
@@ -105,8 +105,8 @@ const LoginForm = () => {
     };
 
     try {
-      const url = "https://sbroker-backend.vercel.app/user/signup";
-      const res = await axios.get(url, signupInfo, { withCredentials: true });
+      const url = "http://localhost:4000/user/signup";
+      const res = await axios.post(url, signupInfo, { withCredentials: true });
 
       if (res.status === 200) {
         setSignupMessage("Signup Successful!");

@@ -18,12 +18,12 @@ const ProfileHome = () => {
     if (!isNaN(amountToAdd) && amountToAdd > 0) {
       if (amountToAdd <= 10000) {
         try {
-          const url = `https://sbroker-backend.vercel.app/profile/moneyin/${UserId}`;
+          const url = `http://localhost:4000/profile/moneyin/${UserId}`;
           const authtoken = localStorage.getItem("authToken");
           const amountinfo = {
             amount: amountToAdd,
           };
-          const res = await axios.get(
+          const res = await axios.post(
             url,
             amountinfo,
             {
@@ -60,8 +60,8 @@ const ProfileHome = () => {
       try {
         const authtoken = localStorage.getItem("authToken");
 
-        const response = await axios.get(
-          `https://sbroker-backend.vercel.app/profile/updatedp/${UserId}`,
+        const response = await axios.post(
+          `http://localhost:4000/profile/updatedp/${UserId}`,
           formData,
           {
             headers: {

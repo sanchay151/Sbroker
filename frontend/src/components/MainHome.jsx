@@ -73,7 +73,7 @@ const MainHome = () => {
       console.log(authtoken);
       if (authtoken) {
         try {
-          const url = "https://sbroker-backend.vercel.app/profile/profileid";
+          const url = "http://localhost:4000/profile/profileid";
           const response = await axios.get(url, {
             headers: {
               Authorization: `Bearer ${authtoken}`,
@@ -89,7 +89,7 @@ const MainHome = () => {
             const userid=userinfo.user._id;
             
             try {
-              const url = `https://sbroker-backend.vercel.app/stock/totalprofit/${userid}`;
+              const url = `http://localhost:4000/stock/totalprofit/${userid}`;
               const res = await axios.get(url, {
                 headers: {
                   Authorization: `Bearer ${authtoken}`,

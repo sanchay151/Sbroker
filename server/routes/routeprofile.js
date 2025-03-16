@@ -9,8 +9,8 @@ const{
 
 const { authenticateToken } = require("../middleware/Auth");
 
-router.get("/moneyin/:userId",authenticateToken,moneyin);
+router.post("/moneyin/:userId",authenticateToken,moneyin);
 router.get("/profileid",authenticateToken,profileid);
-router.get("/updatedp/:userId",authenticateToken,updateProfilePicture);
+router.post("/updatedp/:userId",authenticateToken,updateProfilePicture);
 
 module.exports=router;

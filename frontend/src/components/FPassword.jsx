@@ -22,8 +22,8 @@ const FPassword = ()=>{
          email:FPasswordData.email
       }
       try {
-         const url="https://sbroker-backend.vercel.app/user/forgot-userpassword";
-         const res=await axios.get(url,fp,{ withCredentials: true });
+         const url="http://localhost:4000/user/forgot-userpassword";
+         const res=await axios.post(url,fp,{ withCredentials: true });
          console.log(res);
          console.log("yahan hai");
          setFPasswordmessage(res.data.message)
