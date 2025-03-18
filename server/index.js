@@ -29,7 +29,7 @@ app.use(cookieparser());
 
 app.use(
 	cors({
-		origin:"https://sbroker.vercel.app",
+		origin:'*',
 		credentials:true,
 	})
 )
