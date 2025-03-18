@@ -9,12 +9,7 @@ const cookieparser = require("cookie-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const morgan = require("morgan"); // Logging middleware
-app.use(
-	cors({
-		origin:["http://localhost:3000","https://sbroker.vercel.app"],
-		credentials:true,
-	})
-)
+
 // app.use(cors({
   
   // origin: 'http://localhost:3000',
@@ -35,8 +30,13 @@ database.connect();
 
 app.use(express.json());
 app.use(cookieparser());
-app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev")); // Use detailed logs in development
-
+// app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev")); // Use detailed logs in development
+app.use(
+	cors({
+		origin:["http://localhost:3000","https://sbroker.vercel.app"],
+		credentials:true,
+	})
+)
 // Routes
 app.use("/user", userroutes);
 app.use("/profile", profileroutes);
