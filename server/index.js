@@ -23,17 +23,13 @@ const PORT = process.env.PORT || 4000;
 // Connect to the database
 database.connect();
 
-// Middleware for CORS
-
-
-// Other Middleware
 
 app.use(express.json());
 app.use(cookieparser());
-// app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev")); // Use detailed logs in development
+
 app.use(
 	cors({
-		origin:["http://localhost:3000","https://sbroker.vercel.app"],
+		origin:"https://sbroker.vercel.app",
 		credentials:true,
 	})
 )
@@ -55,14 +51,14 @@ app.get("/", (req, res) => {
 
 
 // Error handling middleware
-app.use((err, req, res, next) => {
-  console.error("Server error:", err.stack || err.message);
-  res.status(500).json({
-    success: false,
-    message: "An unexpected error occurred",
-    error: process.env.NODE_ENV === "development" ? err.message : undefined,
-  });
-});
+// app.use((err, req, res, next) => {
+//   console.error("Server error:", err.stack || err.message);
+//   res.status(500).json({
+//     success: false,
+//     message: "An unexpected error occurred",
+//     error: process.env.NODE_ENV === "development" ? err.message : undefined,
+//   });
+// });
 
 // Start the server
 app.listen(PORT, () => {
