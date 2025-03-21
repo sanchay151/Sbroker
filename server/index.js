@@ -29,12 +29,18 @@ app.use(cookieparser());
 
 app.use(
 	cors({
-		origin:'*',
+		origin:["http://localhost:3000","https://sbroker.vercel.app"],
 		credentials:true,
 	})
 )
 // Routes
-app.use("/user", userroutes);
+//app.use("/user", userroutes);
+app.post("/user/login",(req,res)=>{
+  return res.json({
+    success:true,
+    message:"login wala chl rha"
+  });
+});
 app.use("/profile", profileroutes);
 app.use("/stock", stockroutes);
 app.use("/watchlist", watchlistroute);
