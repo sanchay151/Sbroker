@@ -80,13 +80,7 @@ exports.signup = async (req, res) => {
 exports.login = async (req, res) => {
     try {
         const { email, userpassword } = req.body;
-        return res.status(200).json({
-            success:true,
-            req,
-            email,
-            userpassword
-        })
-       /*
+
         // Validate input fields
         if(!userpassword){
             console.log(req);
@@ -157,7 +151,6 @@ exports.login = async (req, res) => {
             user,
             message: "User login successful",
         });
-        */
     } catch (error) {
         console.error(error);
         return res.status(500).json({

@@ -34,7 +34,7 @@ app.use(
 	})
 )
 // Routes
-//app.use("/user", userroutes);
+app.use("/user", userroutes);
 /*app.post("/user/login",(req,res)=>{
   return res.json({
     success:true,
@@ -42,7 +42,7 @@ app.use(
   });
 });
 */
-app.post("/user/login",login.login);
+//app.post("/user/login",login.login);
 app.use("/profile", profileroutes);
 app.use("/stock", stockroutes);
 app.use("/watchlist", watchlistroute);
