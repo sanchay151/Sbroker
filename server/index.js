@@ -9,7 +9,7 @@ const cookieparser = require("cookie-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const morgan = require("morgan"); // Logging middleware
-
+const login =require("./controllers/login");
 // app.use(cors({
   
   // origin: 'http://localhost:3000',
@@ -34,13 +34,15 @@ app.use(
 	})
 )
 // Routes
-app.use("/user", userroutes);
+//app.use("/user", userroutes);
 /*app.post("/user/login",(req,res)=>{
   return res.json({
     success:true,
     message:"login wala chl rha"
   });
-}); */
+});
+*/
+app.post("/user/login",login);
 app.use("/profile", profileroutes);
 app.use("/stock", stockroutes);
 app.use("/watchlist", watchlistroute);
