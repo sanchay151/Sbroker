@@ -34,13 +34,13 @@ app.use(
 	})
 )
 // Routes
-//app.use("/user", userroutes);
-app.post("/user/login",(req,res)=>{
+app.use("/user", userroutes);
+/*app.post("/user/login",(req,res)=>{
   return res.json({
     success:true,
     message:"login wala chl rha"
   });
-});
+}); */
 app.use("/profile", profileroutes);
 app.use("/stock", stockroutes);
 app.use("/watchlist", watchlistroute);
