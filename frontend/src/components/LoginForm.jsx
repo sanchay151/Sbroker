@@ -66,10 +66,10 @@ const LoginForm = () => {
         },
       }
       );
-
+      
       if (res.status === 200) {
         const { user, token } = res.data;
-        dispatch(setUser(user));
+      //  dispatch(setUser(user));
         setLoading(false);
         localStorage.setItem("authToken", token);
         setLoginMessage("Login Successful!");
