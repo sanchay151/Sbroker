@@ -42,7 +42,7 @@ app.use(
   });
 });
 */
-app.post("/user/login",login);
+app.post("/user/login",login.login);
 app.use("/profile", profileroutes);
 app.use("/stock", stockroutes);
 app.use("/watchlist", watchlistroute);
