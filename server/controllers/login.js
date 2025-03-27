@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const Stock= require("../models/Stock")
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const moment = require("moment");
 const crypto = require("crypto");
 require('dotenv').config();
@@ -80,13 +80,8 @@ exports.signup = async (req, res) => {
 exports.login = async (req, res) => {
     try {
         const { email, userpassword } = req.body;
-        return res.status(200).json({
-            success:true,
-            req,
-            email,
-            userpassword
-        })
-       /*
+    
+       
         // Validate input fields
         if(!userpassword){
             console.log(req);
@@ -157,7 +152,7 @@ exports.login = async (req, res) => {
             user,
             message: "User login successful",
         });
-        */
+        
     } catch (error) {
         console.error(error);
         return res.status(500).json({
