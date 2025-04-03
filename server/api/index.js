@@ -17,6 +17,12 @@ const login =require("../controllers/login");
   // credentials: true,
   // optionsSuccessStatus: 204,
 // }));
+app.use(
+	cors({
+		origin:["http://localhost:3000","https://sbroker.vercel.app"],
+		credentials:true,
+	})
+)
 dotenv.config();
 const PORT = process.env.PORT || 4000;
 
@@ -27,12 +33,7 @@ database.connect();
 app.use(express.json());
 app.use(cookieparser());
 
-app.use(
-	cors({
-		origin:["http://localhost:3000","https://sbroker.vercel.app"],
-		credentials:true,
-	})
-)
+
 // Routes
 app.use("/user", userroutes);
 /*app.post("/user/login",(req,res)=>{
