@@ -1,15 +1,15 @@
 const express = require("express");
 const app = express();
-const userroutes = require("./routes/routelogin");
-const profileroutes = require("./routes/routeprofile");
-const stockroutes = require("./routes/routestock");
-const watchlistroute = require("./routes/routewatchlist");
-const database = require("./config/database");
+const userroutes = require("../routes/routelogin");
+const profileroutes = require("../routes/routeprofile");
+const stockroutes = require("../routes/routestock");
+const watchlistroute = require("../routes/routewatchlist");
+const database = require("../config/database");
 const cookieparser = require("cookie-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const morgan = require("morgan"); // Logging middleware
-const login =require("./controllers/login");
+const login =require("../controllers/login");
 // app.use(cors({
   
   // origin: 'http://localhost:3000',
