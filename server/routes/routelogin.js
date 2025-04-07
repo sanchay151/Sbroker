@@ -1,5 +1,15 @@
 const express = require("express");
 const router = express.Router();
+const cors = require("cors");
+
+// Define the CORS configuration properly
+const corsConfig = {
+  origin: ["http://localhost:3000", "https://sbroker.vercel.app"],
+  credentials: true,
+};
+
+// Apply CORS middleware to the router
+router.use(cors(corsConfig));
 
 const {
   signup,
@@ -8,8 +18,6 @@ const {
   resetuserpassword,
   logout,
 } = require("../controllers/login");
-
-//const { authenticateToken } = require("../middleware/Auth");
 
 // login and signup
 router.post("/login", login);
