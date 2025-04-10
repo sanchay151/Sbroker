@@ -30,7 +30,7 @@ const RPassword = () => {
       confirmuserpassword: RPasswordData.confirmuserpassword,
     };
     try {
-      const url = `http://localhost:4000/user/userpasswordreset/${ResetToken}`;
+      const url = `https://sbroker-backend.vercel.app/user/userpasswordreset/${ResetToken}`;
       const res = await axios.post(url, RP, { withCredentials: true });
       console.log(res);
       setRPasswordmessage(res.data.message);

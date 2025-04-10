@@ -15,7 +15,7 @@ const DeciderHome = () => {
 
       if (authtoken) {
         try {
-          const url = "http://localhost:4000/profile/profileid";
+          const url = "https://sbroker-backend.vercel.app/profile/profileid";
           const response = await axios.get(url, {
             headers: {
               Authorization: `Bearer ${authtoken}`,
