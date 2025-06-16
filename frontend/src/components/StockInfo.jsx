@@ -243,13 +243,12 @@ const StockInfo = () => {
       toast.error("An error occurred while selling the stock. Please try again.");
     }
   };
+  var close=0;
   if(opendaily){
-      const close = parseFloat(opendaily.open || 0);
+       close = parseFloat(opendaily.open || 0);
 
   }
-  else{
-    const close=0;
-  }
+
   const open = parseFloat(daily.close || 0);
   const change = close - open;
   const changePercent = open !== 0 ? (change / open) * 100 : 0;
