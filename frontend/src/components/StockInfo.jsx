@@ -248,8 +248,11 @@ const StockInfo = () => {
        close = parseFloat(opendaily.open || 0);
 
   }
-
-  const open = parseFloat(daily.close || 0);
+  var open=0;
+  if(daily && daily.close){
+    open=daily.close;
+  }
+  //const open = parseFloat(daily.close || 0);
   const change = close - open;
   const changePercent = open !== 0 ? (change / open) * 100 : 0;
 
