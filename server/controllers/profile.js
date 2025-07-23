@@ -46,42 +46,51 @@ exports.moneyin= async(req,res)=>{
     }
 
 };
-exports.profileid= async (req,res)=>{
+exports.profileid = async (req, res) => {
     try {
-        const  userId = req.subse.id; 
-        
-        const user = await User.findById(userId).populate('stocksHolding');
-        const lastUpdate = user.lastPriceUpdate;
-        const now = moment();
-        const today8AM = moment().hour(8).minute(0).second(0);
+        const userId = req.subse.id;
 
-        if (!lastUpdate || moment(lastUpdate).isBefore(today8AM)) {
-            await updateStockPrices(user);
-            user.lastPriceUpdate = now;
-            await user.save();
-        }
-        console.log(userId);
+        const user = await User.findById(userId).populate('stocksHolding');
         if (!user) {
             return res.status(404).json({
                 success: false,
-                userId,
                 message: "User not found",
             });
         }
-        
-        return res.status(200).json({
-            success:true,
-            message:"profile data given",
-            user
 
-        })
+        const lastUpdate = user.lastPriceUpdate;
+        const now = moment.utc(); // using GMT/UTC
+        const today8AM = moment.utc().hour(8).minute(0).second(0).millisecond(0);
+
+        // If it's past 8AM GMT now
+        if (now.isAfter(today8AM)) {
+            if (!lastUpdate || moment.utc(lastUpdate).isBefore(today8AM)) {
+                try {
+                    await updateStockPrices(user);
+                    user.lastPriceUpdate = now;
+                    await user.save();
+                } catch (err) {
+                    console.error("Error during price update:", err.message);
+                    // Continue anyway; don’t block response
+                }
+            }
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Profile data given",
+            user
+        });
+
     } catch (error) {
+        console.error(error);
         return res.status(500).json({
             success: false,
             message: "Error updating profile data",
         });
     }
-}
+};
+
 
 // cloudinary related keys
 cloudinary.config({
