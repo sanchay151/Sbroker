@@ -56,7 +56,7 @@ const Checkbox = ({ stockName }) => {
             const addticker={
                 stockticker:stockName
             }
-            const response = await axios.post(`https://sbroker-backend.vercel.app/api/v1/watchlist/addtowatchlist/${UserId}`,addticker, {
+            const response = await axios.post(`https://sbroker-backend.vercel.app/watchlist/addtowatchlist/${UserId}`,addticker, {
                 headers: {
                   Authorization: `Bearer ${authToken}`,
                 },
